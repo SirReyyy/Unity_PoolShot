@@ -3,6 +3,8 @@ using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
 public class UI_Menu : MonoBehaviour {
+
+    public SceneManagerScript _sceneManagerScript;
     public VisualElement veMainMenu, veLevels, veFreePlay;
     public Button btnStart, btnFreePlay, btnExit;
     public Button btnLvl1, btnLvl2, btnLvl3, btnLvl4, btnReturnL;
@@ -44,10 +46,13 @@ public class UI_Menu : MonoBehaviour {
         btnReturnL.clicked += () => BFuncChangeVE(0);
         btnReturnFP.clicked += () => BFuncChangeVE(0);
 
+        btnLvl1.clicked += () => BFuncLevel(1);
+        btnLvl2.clicked += () => BFuncLevel(2);
+        btnLvl3.clicked += () => BFuncLevel(3);
+        btnLvl4.clicked += () => BFuncLevel(4);
 
-
-
-    
+        btn9Ball.clicked += () => BFuncFreePlay(9);
+        btn15Ball.clicked += () => BFuncFreePlay(15);
     } // -- OnEnable Function
 
     void BFuncChangeVE(int num) {
@@ -75,6 +80,16 @@ public class UI_Menu : MonoBehaviour {
                 break;
         }
     } //-- Button Function Change VE
+
+    void BFuncLevel(int lvlOption) {
+        PersistentManagerScript.Instance.Level_Option = lvlOption;
+        _sceneManagerScript.LoadLevelScene();
+    } //-- BFuncLevel Function
+
+    void BFuncFreePlay(int fpOption) {
+        PersistentManagerScript.Instance.FreePlay_Option = fpOption;
+        _sceneManagerScript.LoadFreePlayScene();
+    } //-- BFuncFreePlay Function
 }
 
 
