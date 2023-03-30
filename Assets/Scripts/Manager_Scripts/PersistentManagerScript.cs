@@ -8,6 +8,7 @@ public class PersistentManagerScript : MonoBehaviour {
 
     // Variables
     public int Level_Option = 0, FreePlay_Option = 0;
+    // public bool Level_1 = Level_2 = Level_3 = Level_4 = false; 
 
     private void Awake() {
         if (Instance == null) {

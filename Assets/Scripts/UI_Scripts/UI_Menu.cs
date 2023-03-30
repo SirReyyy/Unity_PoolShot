@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class UI_Menu : MonoBehaviour {
 
     public SceneManagerScript _sceneManagerScript;
+
     public VisualElement veMainMenu, veLevels, veFreePlay;
     public Button btnStart, btnFreePlay, btnExit;
     public Button btnLvl1, btnLvl2, btnLvl3, btnLvl4, btnReturnL;
@@ -55,6 +56,7 @@ public class UI_Menu : MonoBehaviour {
         btn15Ball.clicked += () => BFuncFreePlay(15);
     } // -- OnEnable Function
 
+    // Show and Hide Visual Editors
     void BFuncChangeVE(int num) {
         switch(num) {
             case 0:     // Main Menu VE
@@ -73,7 +75,7 @@ public class UI_Menu : MonoBehaviour {
                 veFreePlay.style.display = DisplayStyle.Flex;
                 break;
             case 3:     // Exit Game
-                
+                _sceneManagerScript.QuitGame();
                 // Application.Quit(); called on Singleton?
                 break;
             default:
@@ -81,11 +83,13 @@ public class UI_Menu : MonoBehaviour {
         }
     } //-- Button Function Change VE
 
+    // Load Level Scene
     void BFuncLevel(int lvlOption) {
         PersistentManagerScript.Instance.Level_Option = lvlOption;
         _sceneManagerScript.LoadLevelScene();
     } //-- BFuncLevel Function
 
+    // Load Free Play Scene
     void BFuncFreePlay(int fpOption) {
         PersistentManagerScript.Instance.FreePlay_Option = fpOption;
         _sceneManagerScript.LoadFreePlayScene();

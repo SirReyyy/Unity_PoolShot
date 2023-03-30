@@ -2,7 +2,10 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 
-public class UI_Gameplay : MonoBehaviour {
+public class UI_Level : MonoBehaviour {
+
+    public SceneManagerScript _sceneManagerScript;
+
     public VisualElement veGameplay, vePause, veNextLevel;
     public Button btnSettings, btnContinueP, btnRestartP, btnHomeP;
     public Button btnContinueNL, btnRestartNL, btnHomeNL;
@@ -10,6 +13,7 @@ public class UI_Gameplay : MonoBehaviour {
 
 
     private int lvl_Option = PersistentManagerScript.Instance.Level_Option;
+    private bool task1_Status, task2_Status, task3_Status;
 
     void OnEnable() {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -43,12 +47,12 @@ public class UI_Gameplay : MonoBehaviour {
         btnSettings.clicked += () => BFuncChangeVE(1);
 
         btnContinueP.clicked += () => BFuncChangeVE(0);
-        // btnRestartP.clicked += () => BFuncChangeVE(4);
+        btnRestartP.clicked += () => BFuncChangeVE(3);
         btnHomeP.clicked += () => BFuncChangeVE(5);
 
-        btnContinueNL.clicked += () => BFuncChangeVE(3);
-        // btnRestartNL.clicked += () => BFuncChangeVE(4);
-        btnHomeP.clicked += () => BFuncChangeVE(5);
+        btnContinueNL.clicked += () => BFuncChangeVE(4);
+        btnRestartNL.clicked += () => BFuncChangeVE(3);
+        btnHomeNL.clicked += () => BFuncChangeVE(5);
 
         DisplayTasks(lvl_Option);
 
@@ -71,11 +75,17 @@ public class UI_Gameplay : MonoBehaviour {
                 vePause.style.display = DisplayStyle.None;
                 veNextLevel.style.display = DisplayStyle.Flex;
                 break;
-            case 3:     // New Level VE
+            case 3:     // Restart Level VE
+                PersistentManagerScript.Instance.Level_Option = lvl_Option;
+                _sceneManagerScript.LoadLevelScene();
                 break;
-            case 4:     // Restart Level VE
+            case 4:     // New Level VE
+                PersistentManagerScript.Instance.Level_Option = lvl_Option + 1;
+                _sceneManagerScript.LoadLevelScene();
                 break;
-            case 5:     // Home VE
+            case 5:     // MenuScene - veMenu
+                PersistentManagerScript.Instance.Level_Option = 0;
+                _sceneManagerScript.LoadMenuScene(); 
                 break;
             default:
                 break;
@@ -111,7 +121,7 @@ public class UI_Gameplay : MonoBehaviour {
             default:
                 break;
         }
-    }
+    } //-- DisplayTasks Function
 }
 
 

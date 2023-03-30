@@ -14,6 +14,11 @@ public class SceneManagerScript : MonoBehaviour {
     public void LoadFreePlayScene() {
         SceneManager.LoadScene("FreePlayScene");
     } //-- LoadFreePlayScene Function
+
+    public void QuitGame() {
+        UnityEditor.EditorApplication.isPlaying = false;    // Exit from Editor
+        // Application.Quit();      // Exit from Build Application
+    } //-- QuitGame Function
 }
 
 

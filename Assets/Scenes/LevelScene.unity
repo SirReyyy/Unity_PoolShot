@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 1742524667}
   - component: {fileID: 1742524669}
   m_Layer: 5
-  m_Name: UI_Gameplay
+  m_Name: UI_Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -419,6 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf0a41be80c24246a4c2cfdd7f89948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneManagerScript: {fileID: 1954888673}
 --- !u!1 &1954888672
 GameObject:
   m_ObjectHideFlags: 0
