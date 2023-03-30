@@ -8,11 +8,17 @@ public class SceneManagerScript : MonoBehaviour {
     } //-- LoadMenuScene Function
 
     public void LoadLevelScene() {
-        SceneManager.LoadScene("LevelScene");
+        int num = PersistentManagerScript.Instance.Level_Option;
+        string scene = "LevelScene_" + num.ToString();
+
+        SceneManager.LoadScene(scene);
     } //-- LoadLevelScene Function
 
     public void LoadFreePlayScene() {
-        SceneManager.LoadScene("FreePlayScene");
+        int num = PersistentManagerScript.Instance.FreePlay_Option;
+        string scene = "FreePlayScene_" + num.ToString();
+
+        SceneManager.LoadScene(scene);
     } //-- LoadFreePlayScene Function
 
     public void QuitGame() {

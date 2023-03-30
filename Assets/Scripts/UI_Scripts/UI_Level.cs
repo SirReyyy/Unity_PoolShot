@@ -93,34 +93,23 @@ public class UI_Level : MonoBehaviour {
     } //-- Button Function Change VE
 
     void DisplayTasks(int option) {
-        switch(option) {
-            case 1:
-                lblLevel.text = "Level " + option.ToString();
-                lblTask1.text = "Level 1 - Task 1";
-                lblTask2.text = "Level 1 - Task 2";
-                lblTask3.text = "Level 1 - Task 3";
-                break;
-            case 2:
-                lblLevel.text = "Level " + option.ToString();
-                lblTask1.text = "Level 2 - Task 1";
-                lblTask2.text = "Level 2 - Task 2";
-                lblTask3.text = "Level 2 - Task 3";
-                break;
-            case 3:
-                lblLevel.text = "Level " + option.ToString();
-                lblTask1.text = "Level 3 - Task 1";
-                lblTask2.text = "Level 3 - Task 2";
-                lblTask3.text = "Level 3 - Task 3";
-                break;
-            case 4:
-                lblLevel.text = "Level " + option.ToString();
-                lblTask1.text = "Level 4 - Task 1";
-                lblTask2.text = "Level 4 - Task 2";
-                lblTask3.text = "Level 4 - Task 3";
-                break;
-            default:
-                break;
-        }
+        lblLevel.text = "Level " + option.ToString();
+        string level = lblLevel.text;
+        
+        if(!task1_Status)
+            lblTask1.text = level + " - Task 1";
+        else
+            lblTask1.text = level + " - Task 1 (Completed)";
+        
+        if(!task2_Status)
+            lblTask2.text = level + " - Task 2";
+        else
+            lblTask2.text = level + " - Task 2 (Completed)";
+        
+        if(!task3_Status)
+            lblTask3.text = level + " - Task 3";
+        else
+            lblTask3.text = level + " - Task 3 (Completed)";
     } //-- DisplayTasks Function
 }
 
